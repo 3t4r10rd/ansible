@@ -6,7 +6,7 @@
   tasks:
   - name: Ensure tomcat package is present
     apt:
-     name: maven
+     name: tomcat
      state: latest
   
 
