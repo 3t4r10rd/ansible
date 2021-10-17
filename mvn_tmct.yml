@@ -46,11 +46,11 @@
   #   dest: rsync://root@34.125.251.177/var/lib/tomcat8/webapps
 
 - name: restart tomcat
-  hosts: tomcat
+  hosts: tomcat8
   become: yes
 
   tasks:
   - name: restart tomcat8
     service :
-     name: tomcat
+     name: tomcat8
      state: restarted
