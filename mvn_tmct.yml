@@ -38,7 +38,7 @@
      chdir: /home/gitclone
   
   - name: Copy war in host with tomcat
-    shell: rsync -avz /home/gitclone/target/hello-1.0.war root@34.125.251.177/var/lib/tomcat8/webapps
+    shell: rsync -avz /home/gitclone/target/hello-1.0.war root@34.125.251.177:/var/lib/tomcat8/webapps
 
   #- name: Copy war in host with tomcat
   #  synchronize: 
