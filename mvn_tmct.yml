@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure tomcat package is present
-    apt :
+    apt:
      name: maven
      state: latest
   
@@ -16,15 +16,16 @@
 
   tasks:
   - name: Ensure maven package is present
-    apt :
+    apt:
      name: maven
      state: latest
 
-  - name: Ensure app clone from git
+  - name: Ensure dir for git is there
     shell: mkdir gitclone
     args:
      chdir: /home
-     
+
+  - name: Ensure app clone from git   
     git: 
      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
      dest: /home
