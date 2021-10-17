@@ -23,16 +23,16 @@
   - name: Ensure app clone from git
     git: 
      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-     dest: /home/
+     dest: /home/git
 
   - name: Ensure app is package
     shell: mvn package
     args:
-     chdir: /home/boxfuse-sample-java-war-hello
+     chdir: /home/git/boxfuse-sample-java-war-hello
   
   - name: Copy war in host with tomcat
     synchronize: 
-     src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
+     src: /home/git/boxfuse-sample-java-war-hello/target/hello-1.0.war
      dest: root@34.125.251.177:/var/lib/tomcat/webapps
 
 - name: restart tomcat
