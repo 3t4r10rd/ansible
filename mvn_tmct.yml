@@ -1,0 +1,46 @@
+---
+- name: install tomcat
+  hosts: tomcat
+  become: yes
+
+  tasks:
+  - name: Ensure tomcat package is present
+    apt :
+     name: maven
+     state: latest
+  
+
+- name: install maven
+  hosts: maven
+  become: yes
+
+  tasks:
+  - name: Ensure maven package is present
+    apt :
+     name: maven
+     state: latest
+
+  - name: Ensure app clone from git
+    git: 
+     repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+     dest: /home/
+
+  - name: Ensure app is package
+    shell: mvn package
+    args:
+     chdir: /home/boxfuse-sample-java-war-hello
+  
+  - name: Copy war in host with tomcat
+    synchronize: 
+     src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
+     dest: root@34.125.251.177:/var/lib/tomcat/webapps
+
+- name: restart tomcat
+  hosts: tomcat
+  become: yes
+
+  tasks:
+  - name: restart tomcat
+    service :
+     name: tomcat
+     state: restarted
