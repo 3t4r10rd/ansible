@@ -7,7 +7,7 @@
   - name: Ensure tomcat package is present
     apt:
      update_cache: yes
-     name: tomcat
+     name: tomcat8
      state: present
   
 
@@ -40,14 +40,14 @@
   - name: Copy war in host with tomcat
     synchronize: 
      src: /home/gitclone/target/hello-1.0.war
-     dest: root@34.125.251.177:/var/lib/tomcat/webapps
+     dest: root@34.125.251.177:/var/lib/tomcat8/webapps
 
 - name: restart tomcat
   hosts: tomcat
   become: yes
 
   tasks:
-  - name: restart tomcat
+  - name: restart tomcat8
     service :
      name: tomcat
      state: restarted
