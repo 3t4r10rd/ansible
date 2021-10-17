@@ -21,6 +21,10 @@
      state: latest
 
   - name: Ensure app clone from git
+    shell: mkdir gitclone
+    args:
+     chdir: /home
+     
     git: 
      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
      dest: /home
