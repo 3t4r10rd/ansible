@@ -39,7 +39,7 @@
   
   - name: Copy war in host with tomcat
     synchronize: 
-     src: /home/gitclone/target/hello-1.0.war
+     src: rsync://home/gitclone/target/hello-1.0.war
      dest: root@34.125.251.177:/var/lib/tomcat8/webapps
 
 - name: restart tomcat
