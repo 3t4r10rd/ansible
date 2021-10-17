@@ -21,9 +21,9 @@
      state: latest
 
   - name: Ensure dir for git is there
-    shell: mkdir gitclone
-    args:
-     chdir: /home
+    file: 
+     path: /home/gitclone
+     state: directtry
 
   - name: Ensure app clone from git   
     git: 
