@@ -4,11 +4,11 @@
   become: yes
 
   tasks:
-- name: Ensure tomcat package is present
-  apt:
-   update_cache: yes
-   name: tomcat
-   state: present
+  - name: Ensure tomcat package is present
+    apt:
+     update_cache: yes
+     name: tomcat
+     state: present
   
 
 - name: install maven
